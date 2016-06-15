@@ -1,13 +1,19 @@
 package com.grupo3.gatoencerrado;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v7.util.SortedList;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.grupo3.gatoencerrado.model.Laberinto;
+import com.grupo3.gatoencerrado.service.LaberintosService;
 
+import java.io.CharArrayReader;
 import java.util.List;
 
 public class LaberintosListFragment extends ListFragment {
@@ -101,6 +107,7 @@ public class LaberintosListFragment extends ListFragment {
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
+
         Laberinto laberinto = (Laberinto) listView.getAdapter().getItem(position);
         mCallbacks.onItemSelected(String.valueOf(laberinto.getId()));
     }
@@ -134,30 +141,35 @@ public class LaberintosListFragment extends ListFragment {
         }
 
         mActivatedPosition = position;
+   }
+
+
+    private void obtenerLaberintos() {
+
+        CharSequence character = "Test para lista";
+        Toast.makeText(getActivity(), "char", Toast.LENGTH_SHORT).show();
+
     }
 
-    /**
-     private void obtenerLaberintos() {
-     LaberintosService laberintosService = createLaberintosService();
-     laberintosService.getLaberintos(new SortedList.Callback<List<Laberinto>>() {
-    //@Override
+
+    /**@Override
     public void success(List<Laberinto> laberintos, Response response) {
     agregarLaberintos(laberintos);
-    }
+    }*/
 
-    //@Override
+    /**@Override
     public void failure(RetrofitError error) {
-    Log.e("", error.getMessage());
-    error.printStackTrace();
+        Log.e("", error.getMessage());
+        error.printStackTrace();
     }
-    });
+     });
      }
-     */
+    */
 
 
-    private void agregarLibros(List<Laberinto> libros) {
+    /**private void agregarLibros(List<Laberinto> libros) {
         setListAdapter(new LaberintoAdapter(getActivity(), libros));
-    }
+    }*/
 
     /**
      private LaberintosService createLaberintosService() {

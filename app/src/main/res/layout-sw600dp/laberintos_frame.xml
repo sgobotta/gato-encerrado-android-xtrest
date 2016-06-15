@@ -23,6 +23,13 @@
         android:id="@+id/laberinto_detail_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="3"/>
+        android:layout_weight="3">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="SOY DE 600DP"/>
+
+    </FrameLayout>
 
 </LinearLayout>

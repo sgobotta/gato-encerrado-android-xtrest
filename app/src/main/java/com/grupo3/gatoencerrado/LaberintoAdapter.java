@@ -18,9 +18,9 @@ public class LaberintoAdapter extends AbstractListAdapter<Laberinto> {
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Laberinto libro = (Laberinto) getItem(position);
+        Laberinto laberinto = (Laberinto) getItem(position);
         View row = generateRow(R.layout.laberinto_row, parent);
-        setColumnTextView(row, R.id.labTitulo, libro.getNombre());
+        setColumnTextView(row, R.id.labTitulo, laberinto.getNombre());
         return row;
     }
 

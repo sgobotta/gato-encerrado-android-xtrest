@@ -15,7 +15,4 @@
         tools:context=".LaberintosListActivity"
         tools:layout="@android:layout/list_content"/>
 
-
-
-
 </FrameLayout>
