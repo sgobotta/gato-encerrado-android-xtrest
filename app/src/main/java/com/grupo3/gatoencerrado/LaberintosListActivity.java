@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-public class LaberintosActivity extends FragmentActivity implements LaberintosListFragment.Callbacks {
+public class LaberintosListActivity extends FragmentActivity implements LaberintosListFragment.Callbacks {
 
     /**
      * Instance variables
@@ -16,6 +16,7 @@ public class LaberintosActivity extends FragmentActivity implements LaberintosLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.laberintos_frame);
 
+
         if (findViewById(R.id.laberinto_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
@@ -26,7 +27,7 @@ public class LaberintosActivity extends FragmentActivity implements LaberintosLi
             // In two-pane mode, list items should be given the
             // 'activated' state when touched.
             ((LaberintosListFragment) getSupportFragmentManager()
-                    .findFragmentById(R.id.libro_list))
+                    .findFragmentById(R.id.laberintos_list))
                     .setActivateOnItemClick(true);
         }
     }

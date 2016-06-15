@@ -1,5 +1,6 @@
 package com.grupo3.gatoencerrado;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -104,11 +105,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_laberintos) {
 
-            LaberintosFragment fragment = new LaberintosFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragmentLayoutContent, fragment);
-            fragmentTransaction.commit();
+
+
+            Intent intent = new Intent(this, LaberintosListActivity.class);
+            startActivity(intent);
 
 
         } else if (id == R.id.nav_configuration) {

@@ -10,7 +10,7 @@ import android.view.MenuItem;
  * An activity representing a single Libro detail screen. This
  * activity is only used on handset devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
- * in a {@link LaberintosActivity}.
+ * in a {@link LaberintosListActivity}.
  * <p/>
  * This activity is mostly just a 'shell' activity containing nothing
  * more than a {@link LaberintoDetailFragment}.
@@ -59,7 +59,7 @@ public class LaberintoDetailActivity extends ActionBarActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            NavUtils.navigateUpTo(this, new Intent(this, LaberintosActivity.class));
+            NavUtils.navigateUpTo(this, new Intent(this, LaberintosListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

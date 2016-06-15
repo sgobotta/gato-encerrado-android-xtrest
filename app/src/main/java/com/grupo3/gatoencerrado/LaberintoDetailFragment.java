@@ -11,7 +11,7 @@ import com.grupo3.gatoencerrado.model.Laberinto;
 
 /**
  * A fragment representing a single Libro detail screen.
- * This fragment is either contained in a {@link LaberintosActivity}
+ * This fragment is either contained in a {@link LaberintosListActivity}
  * in two-pane mode (on tablets) or a {@link LaberintoDetailActivity}
  * on handsets.
  */
@@ -57,8 +57,8 @@ public class LaberintoDetailFragment extends Fragment {
      }
      */
 
-    private void mostrarLibro(Laberinto libro) {
-        ((TextView) this.getView().findViewById(R.id.labTitulo)).setText(libro.getNombre());
+    private void mostrarLaberinto(Laberinto laberinto) {
+        ((TextView) this.getView().findViewById(R.id.labTitulo)).setText(laberinto.getNombre());
     }
 
     /**

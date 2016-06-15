@@ -9,17 +9,11 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".LibroListActivity">
-
-    <!--
-    This layout is a two-pane layout for the Libros
-    master/detail flow.
-
-    -->
+    tools:context=".LaberintosListActivity">
 
     <fragment
-        android:id="@+id/libro_list"
-        android:name="com.grupo3.gatoencerrado.LaberintosFragment"
+        android:id="@+id/laberintos_list"
+        android:name="com.grupo3.gatoencerrado.LaberintosListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

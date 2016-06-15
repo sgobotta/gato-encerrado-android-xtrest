@@ -4,5 +4,5 @@
     android:id="@+id/laberinto_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LibroDetailActivity"
+    tools:context=".LaberintoDetailActivity"
     tools:ignore="MergeRootFrame"/>

@@ -58,13 +58,11 @@ public class LaberintosListFragment extends ListFragment {
     public LaberintosListFragment() {
     }
 
-    /**
      //@Override
      public void onCreate(Bundle savedInstanceState) {
      super.onCreate(savedInstanceState);
-     obtenerLaberintos();
+     //obtenerLaberintos();
      }
-     */
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -103,8 +101,8 @@ public class LaberintosListFragment extends ListFragment {
 
         // Notify the active callbacks interface (the activity, if the
         // fragment is attached to one) that an item has been selected.
-        Laberinto libro = (Laberinto) listView.getAdapter().getItem(position);
-        mCallbacks.onItemSelected(String.valueOf(libro.getId()));
+        Laberinto laberinto = (Laberinto) listView.getAdapter().getItem(position);
+        mCallbacks.onItemSelected(String.valueOf(laberinto.getId()));
     }
 
     @Override
