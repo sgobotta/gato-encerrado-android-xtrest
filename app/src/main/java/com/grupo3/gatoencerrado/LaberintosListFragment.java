@@ -3,13 +3,10 @@ package com.grupo3.gatoencerrado;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.support.v7.util.SortedList;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
 import com.grupo3.gatoencerrado.model.Laberinto;
-import com.grupo3.gatoencerrado.service.LaberintosService;
 
 import java.util.List;
 
@@ -150,7 +147,7 @@ public class LaberintosListFragment extends ListFragment {
     agregarLaberintos(laberintos);
     }
 
-    @Override
+    //@Override
     public void failure(RetrofitError error) {
     Log.e("", error.getMessage());
     error.printStackTrace();
