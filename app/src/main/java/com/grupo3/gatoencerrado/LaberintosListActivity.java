@@ -16,7 +16,6 @@ public class LaberintosListActivity extends FragmentActivity implements Laberint
         super.onCreate(savedInstanceState);
         setContentView(R.layout.laberintos_frame);
 
-        /**
         if (findViewById(R.id.laberinto_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
@@ -30,7 +29,7 @@ public class LaberintosListActivity extends FragmentActivity implements Laberint
                     .findFragmentById(R.id.laberintos_list))
                     .setActivateOnItemClick(true);
         }
-         */
+
     }
 
     /**
