@@ -6,7 +6,7 @@
     android:layout_marginRight="16dp"
     android:baselineAligned="false"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".LaberintosListActivity">
 
     <fragment
         android:id="@+id/laberintos_list"
