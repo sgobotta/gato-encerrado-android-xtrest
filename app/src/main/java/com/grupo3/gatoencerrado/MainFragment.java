@@ -17,11 +17,8 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frame_main, container, false);
 
-        // Because this is a favourites fragment, it should load any favourites
-        // from a database
+        return inflater.inflate(R.layout.frame_main, container, false);
 
     }
 

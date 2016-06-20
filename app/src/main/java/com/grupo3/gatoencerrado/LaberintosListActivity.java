@@ -38,11 +38,11 @@ public class LaberintosListActivity extends FragmentActivity implements Laberint
      */
     @Override
     public void onItemSelected(String id) {
-        //if (isWideScreen) {
+        if (isWideScreen) {
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
-        /**
+
             Bundle arguments = new Bundle();
             arguments.putString(LaberintoDetailFragment.ARG_ITEM_ID, id);
             LaberintoDetailFragment fragment = new LaberintoDetailFragment();
@@ -51,7 +51,7 @@ public class LaberintosListActivity extends FragmentActivity implements Laberint
                     .replace(R.id.laberinto_detail_container, fragment)
                     .commit();
 
-        /**
+
         } else {
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
@@ -59,6 +59,6 @@ public class LaberintosListActivity extends FragmentActivity implements Laberint
             detailIntent.putExtra(LaberintoDetailFragment.ARG_ITEM_ID, id);
             startActivity(detailIntent);
         }
-         */
+
     }
 }

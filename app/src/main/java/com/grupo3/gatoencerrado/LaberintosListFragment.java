@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v7.util.SortedList;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +17,11 @@ import com.grupo3.gatoencerrado.service.LaberintosService;
 
 import java.io.CharArrayReader;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class LaberintosListFragment extends ListFragment {
 
@@ -64,11 +71,19 @@ public class LaberintosListFragment extends ListFragment {
     public LaberintosListFragment() {
     }
 
-     //@Override
+     @Override
      public void onCreate(Bundle savedInstanceState) {
-     super.onCreate(savedInstanceState);
-     //obtenerLaberintos();
+         super.onCreate(savedInstanceState);
+         obtenerLaberintos();
      }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.frame_main, container, false);
+
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -145,42 +160,40 @@ public class LaberintosListFragment extends ListFragment {
 
 
     private void obtenerLaberintos() {
+        LaberintosService laberintosService = createLaberintosService();
+        laberintosService.getLaberintos(new Callback<List<Laberinto>>() {
+            @Override
+            public void success(List<Laberinto> laberintos, Response response) {
+                agregarLaberintos(laberintos);
+            }
 
-        CharSequence character = "Test para lista";
-        Toast.makeText(getActivity(), "char", Toast.LENGTH_SHORT).show();
-
+            @Override
+            public void failure(RetrofitError error) {
+                Log.e("", error.getMessage());
+                error.printStackTrace();
+            }
+        });
     }
 
 
-    /**@Override
-    public void success(List<Laberinto> laberintos, Response response) {
-    agregarLaberintos(laberintos);
-    }*/
 
-    /**@Override
-    public void failure(RetrofitError error) {
-        Log.e("", error.getMessage());
-        error.printStackTrace();
+    private void agregarLaberintos(List<Laberinto> laberintos) {
+        setListAdapter(new LaberintoAdapter(getActivity(), laberintos));
     }
-     });
-     }
-    */
 
 
-    /**private void agregarLibros(List<Laberinto> libros) {
-        setListAdapter(new LaberintoAdapter(getActivity(), libros));
-    }*/
-
-    /**
      private LaberintosService createLaberintosService() {
-     //MMM código repetido, habría que modificar esto no?
-     String SERVER_IP = "10.0.2.2"; //esta ip se usa para comunicarse con mi localhost en el emulador de Android Studio
-     String SERVER_IP_GENY = "192.168.56.1";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
-     String API_URL = "http://"+ SERVER_IP_GENY +":9000";
 
-     RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
-     LaberintosService librosService = restAdapter.create(LaberintosService.class);
-     return librosService;
+         //String SERVER_IP = "10.0.2.2"; //esta ip se usa para comunicarse con mi localhost en el emulador de Android Studio
+
+         String SERVER_IP = "186.139.17.98";
+         String SERVER_IP_GENY = "192.168.56.1";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
+         String API_URL = "http://"+ SERVER_IP +":9001";
+
+
+         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
+         LaberintosService laberintosService = restAdapter.create(LaberintosService.class);
+         return laberintosService;
      }
-     */
+
 }
