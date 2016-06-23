@@ -72,7 +72,18 @@ public class LabListFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String toastString = "Seleccionaste el laberinto: " + parent.getItemAtPosition(position).toString();
-                Toast.makeText(getContext(), toastString, Toast.LENGTH_SHORT).show();
+                SingleToast.show(getContext(), toastString, Toast.LENGTH_SHORT);
+
+                // Probablemente esta no sea la manera más feliz de hacerlo, pero funciona y no usa constructor con parametros del fragment.
+                Laberinto labSelected = (Laberinto) parent.getItemAtPosition(position);
+                LabDetailsFragment fragment = new LabDetailsFragment();
+                Bundle args = new Bundle();
+                args.putInt("idLaberinto", labSelected.getIdLaberinto());
+                args.putString("nombreLaberinto", labSelected.getNombreLaberinto());
+                args.putString("imagePath", labSelected.getImagePath());
+                fragment.setArguments(args);
+                LabListActivity activity = (LabListActivity) LabListFragment.this.getActivity();
+                activity.replaceFullscreenFragment(fragment, "labDetails");
             }
         });
     }

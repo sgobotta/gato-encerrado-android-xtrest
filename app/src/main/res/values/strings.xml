@@ -16,5 +16,6 @@
     <string name="user_text_view">Elije un usuario</string>
     <string name="aceptar">Aceptar</string>
     <string name="title_activity_lab_list">LabListActivity</string>
+    <string name="lab_name_placeholder">Nombre del laberinto</string>
 
 </resources>

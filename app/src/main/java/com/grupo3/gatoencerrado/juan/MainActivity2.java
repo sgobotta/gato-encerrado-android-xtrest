@@ -45,8 +45,12 @@ public class MainActivity2 extends AppCompatActivity {
             changeToLabList.putExtra("userId", user.getID());
             startActivity(changeToLabList);
         } else {
-            Toast.makeText(this, "No seleccionaste ningun usuario!", Toast.LENGTH_SHORT).show();
+            SingleToast.show(this, "No seleccionaste ningun usuario!", Toast.LENGTH_SHORT);
         }
+    }
+
+    public void actualizarLista(View view){
+        getUsersPlaying();
     }
 
     private void getUsersPlaying() {
@@ -71,7 +75,9 @@ public class MainActivity2 extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         if(usersPlaying.size() == 0){
-            Toast.makeText(this, "No hay usuarios jugando actualmente", Toast.LENGTH_SHORT).show();
+            SingleToast.show(this, "No hay usuarios jugando actualmente", Toast.LENGTH_SHORT);
         }
     }
+
+
 }
