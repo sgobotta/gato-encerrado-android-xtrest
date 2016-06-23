@@ -18,6 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/details_lab_path"
+        android:text="labPath"
         android:layout_below="@+id/details_lab_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
@@ -26,11 +27,21 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="labId"
         android:id="@+id/details_lab_id"
         android:layout_below="@+id/details_lab_path"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:textSize="20sp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver inventario"
+        android:id="@+id/button_ver_inventario"
+        android:layout_below="@+id/details_lab_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
 
 
 </RelativeLayout>

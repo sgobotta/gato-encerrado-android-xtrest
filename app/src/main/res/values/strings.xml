@@ -17,5 +17,6 @@
     <string name="aceptar">Aceptar</string>
     <string name="title_activity_lab_list">LabListActivity</string>
     <string name="lab_name_placeholder">Nombre del laberinto</string>
+    <string name="inventory_title">Inventario</string>
 
 </resources>

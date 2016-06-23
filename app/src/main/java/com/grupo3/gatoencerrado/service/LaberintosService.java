@@ -1,5 +1,6 @@
 package com.grupo3.gatoencerrado.service;
 
+import com.grupo3.gatoencerrado.model.Elemento;
 import com.grupo3.gatoencerrado.model.Laberinto;
 import com.grupo3.gatoencerrado.model.User;
 
@@ -23,4 +24,6 @@ public interface LaberintosService {
     @GET("/android/users/playing")
     void getUsersPlaying(Callback<List<User>> listCallback);
 
+    @GET("/android/inventario/{idUser}/{idLab}")
+    void getInventoryForUser(@Path("idUser") int idUser, @Path("idLab") int idLab, Callback<List<Elemento>> listCallback);
 }

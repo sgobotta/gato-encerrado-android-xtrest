@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.grupo3.gatoencerrado.R;
@@ -16,6 +17,7 @@ import com.grupo3.gatoencerrado.model.Laberinto;
  */
 public class LabDetailsFragment extends Fragment {
 
+    private int idLaberinto;
 
     public LabDetailsFragment() {
         // Required empty public constructor
@@ -34,9 +36,24 @@ public class LabDetailsFragment extends Fragment {
         TextView labId = (TextView) getActivity().findViewById(R.id.details_lab_id);
         TextView labPath = (TextView) getActivity().findViewById(R.id.details_lab_path);
 
+        idLaberinto = getArguments().getInt("idLaberinto");
+
         labName.setText(getArguments().getString("nombreLaberinto"));
-        labId.setText(String.valueOf(getArguments().getInt("idLaberinto")));
+        labId.setText(String.valueOf(idLaberinto));
         labPath.setText(getArguments().getString("imagePath"));
+
+        Button verInventario = (Button) getActivity().findViewById(R.id.button_ver_inventario);
+        verInventario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InventoryFragment fragment = new InventoryFragment();
+                Bundle args = new Bundle();
+                args.putInt("idLaberinto", idLaberinto);
+                fragment.setArguments(args);
+                LabListActivity activity = (LabListActivity) LabDetailsFragment.this.getActivity();
+                activity.replaceFullscreenFragment(fragment,"labInventory");
+            }
+        });
 
         super.onActivityCreated(savedInstanceState);
     }

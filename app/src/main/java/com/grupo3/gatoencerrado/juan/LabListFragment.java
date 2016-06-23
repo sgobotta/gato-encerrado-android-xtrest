@@ -71,6 +71,7 @@ public class LabListFragment extends Fragment{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Esto lo use para testear que funcionara el onClick, capaz despues lo borre.
                 String toastString = "Seleccionaste el laberinto: " + parent.getItemAtPosition(position).toString();
                 SingleToast.show(getContext(), toastString, Toast.LENGTH_SHORT);
 
