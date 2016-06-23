@@ -71,17 +71,17 @@ public class LaberintosListFragment extends ListFragment {
     public LaberintosListFragment() {
     }
 
-     @Override
-     public void onCreate(Bundle savedInstanceState) {
-         super.onCreate(savedInstanceState);
-         obtenerLaberintos();
-     }
+//     @Override
+//     public void onCreate(Bundle savedInstanceState) {
+//         super.onCreate(savedInstanceState);
+//         obtenerLaberintos();
+//     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.frame_main, container, false);
+        return inflater.inflate(R.layout.laberintos_frame, container, false);
 
     }
 
@@ -124,7 +124,7 @@ public class LaberintosListFragment extends ListFragment {
         // fragment is attached to one) that an item has been selected.
 
         Laberinto laberinto = (Laberinto) listView.getAdapter().getItem(position);
-        mCallbacks.onItemSelected(String.valueOf(laberinto.getId()));
+        mCallbacks.onItemSelected(String.valueOf(laberinto.getIdLaberinto()));
     }
 
     @Override
@@ -159,21 +159,21 @@ public class LaberintosListFragment extends ListFragment {
    }
 
 
-    private void obtenerLaberintos() {
-        LaberintosService laberintosService = createLaberintosService();
-        laberintosService.getLaberintos(new Callback<List<Laberinto>>() {
-            @Override
-            public void success(List<Laberinto> laberintos, Response response) {
-                agregarLaberintos(laberintos);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Log.e("", error.getMessage());
-                error.printStackTrace();
-            }
-        });
-    }
+//    private void obtenerLaberintos() {
+//        LaberintosService laberintosService = createLaberintosService();
+//        laberintosService.getLaberintos(new Callback<List<Laberinto>>() {
+//            @Override
+//            public void success(List<Laberinto> laberintos, Response response) {
+//                agregarLaberintos(laberintos);
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                Log.e("", error.getMessage());
+//                error.printStackTrace();
+//            }
+//        });
+//    }
 
 
 
@@ -182,18 +182,18 @@ public class LaberintosListFragment extends ListFragment {
     }
 
 
-     private LaberintosService createLaberintosService() {
+    private LaberintosService createLaberintosService() {
 
          //String SERVER_IP = "10.0.2.2"; //esta ip se usa para comunicarse con mi localhost en el emulador de Android Studio
 
-         String SERVER_IP = "186.139.17.98";
-         String SERVER_IP_GENY = "192.168.56.1";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
+         String SERVER_IP = "192.168.1.102";
+         String SERVER_IP_GENY = "192.168.56.2";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
          String API_URL = "http://"+ SERVER_IP +":9001";
 
 
          RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
          LaberintosService laberintosService = restAdapter.create(LaberintosService.class);
          return laberintosService;
-     }
+    }
 
 }

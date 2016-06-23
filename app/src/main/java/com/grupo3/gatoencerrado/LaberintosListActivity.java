@@ -1,8 +1,11 @@
 package com.grupo3.gatoencerrado;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.AttributeSet;
+import android.view.View;
 
 public class LaberintosListActivity extends FragmentActivity implements LaberintosListFragment.Callbacks {
 
@@ -10,6 +13,7 @@ public class LaberintosListActivity extends FragmentActivity implements Laberint
      * Instance variables
      */
     private boolean isWideScreen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,4 +65,5 @@ public class LaberintosListActivity extends FragmentActivity implements Laberint
         }
 
     }
+
 }

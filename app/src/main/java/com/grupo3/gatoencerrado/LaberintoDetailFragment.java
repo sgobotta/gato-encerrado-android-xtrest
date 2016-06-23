@@ -36,36 +36,36 @@ public class LaberintoDetailFragment extends Fragment {
     public LaberintoDetailFragment() {
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        if (getArguments().containsKey(ARG_ITEM_ID)) {
+//            String itemID = getArguments().getString(ARG_ITEM_ID);
+//            obtenerLaberintos(itemID);
+//        }
+//    }
 
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
-            String itemID = getArguments().getString(ARG_ITEM_ID);
-            obtenerLaberintos(itemID);
-        }
-    }
 
-
-    private void obtenerLaberintos(String laberintoId) {
-        LaberintosService laberintosService = createLaberintosService();
-        laberintosService.getLaberinto(laberintoId, new Callback<Laberinto>() {
-            @Override
-            public void success(Laberinto laberinto, Response response) {
-                mostrarLaberinto(laberinto);
-    }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Log.e("", error.getMessage());
-                error.printStackTrace();
-            }
-        });
-     }
+//    private void obtenerLaberintos(String laberintoId) {
+//        LaberintosService laberintosService = createLaberintosService();
+//        laberintosService.getLaberinto(laberintoId, new Callback<Laberinto>() {
+//            @Override
+//            public void success(Laberinto laberinto, Response response) {
+//                mostrarLaberinto(laberinto);
+//    }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//                Log.e("", error.getMessage());
+//                error.printStackTrace();
+//            }
+//        });
+//     }
 
 
     private void mostrarLaberinto(Laberinto laberinto) {
-        ((TextView) this.getView().findViewById(R.id.labTitulo)).setText(laberinto.getNombre());
+        ((TextView) this.getView().findViewById(R.id.labTitulo)).setText(laberinto.getNombreLaberinto());
     }
 
 
