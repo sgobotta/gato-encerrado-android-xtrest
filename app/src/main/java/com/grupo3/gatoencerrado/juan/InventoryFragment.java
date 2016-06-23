@@ -69,7 +69,7 @@ public class InventoryFragment extends Fragment {
 
             @Override
             public void failure(RetrofitError error) {
-                // tendria que cambiar el server para que no devuelva una lista vacia, sino un badRequest, si el inventario que se pide no es de un juego en progreso
+                // tendria que cambiar el server para que no devuelva una lista vacia, sino un badRequest, si el inventario que se pide no es de un juego en progreso.
                 Log.e("", error.getMessage());
                 error.printStackTrace();
             }
