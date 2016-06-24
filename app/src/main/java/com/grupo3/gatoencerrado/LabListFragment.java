@@ -1,7 +1,6 @@
-package com.grupo3.gatoencerrado.juan;
+package com.grupo3.gatoencerrado;
 
 
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.grupo3.gatoencerrado.R;
 import com.grupo3.gatoencerrado.model.Laberinto;
 import com.grupo3.gatoencerrado.service.LaberintosService;
 import com.grupo3.gatoencerrado.service.LaberintosServiceBuilder;
@@ -71,7 +68,7 @@ public class LabListFragment extends Fragment{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                triggerToast(parent, position);
+                //triggerToast(parent, position);
                 triggerFragmentReplace(parent, position);
             }
         });
@@ -92,7 +89,7 @@ public class LabListFragment extends Fragment{
 
         // Reemplazo el fragment por el nuevo
         LabListActivity activity = (LabListActivity) LabListFragment.this.getActivity();
-        activity.replaceFullscreenFragment(fragment, "labDetails");
+        activity.handleFragmentChange(fragment, "labDetails");
     }
 
     private void triggerToast(AdapterView<?> parent, int position) {

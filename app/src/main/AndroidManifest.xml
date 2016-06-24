@@ -11,21 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".LaberintosListActivity"
-            android:label="Lista de Laberintos"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LaberintosListActivity" />
-        </activity>
-        <activity
-            android:name=".juan.MainActivity2"
+            android:name=".MainActivity2"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
         <intent-filter>
@@ -35,7 +21,7 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".juan.LabListActivity"
+            android:name=".LabListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 

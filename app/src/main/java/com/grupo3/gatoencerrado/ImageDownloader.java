@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.grupo3.gatoencerrado.juan;
+package com.grupo3.gatoencerrado;
 
 
 import android.graphics.Bitmap;

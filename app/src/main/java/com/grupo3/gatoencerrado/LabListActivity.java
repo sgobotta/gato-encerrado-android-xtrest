@@ -1,33 +1,16 @@
-package com.grupo3.gatoencerrado.juan;
+package com.grupo3.gatoencerrado;
 
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import com.grupo3.gatoencerrado.R;
-import com.grupo3.gatoencerrado.model.Laberinto;
-import com.grupo3.gatoencerrado.model.User;
-import com.grupo3.gatoencerrado.service.LaberintosService;
-import com.grupo3.gatoencerrado.service.LaberintosServiceBuilder;
-
-import java.util.List;
-
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 public class LabListActivity extends AppCompatActivity {
+
+    private boolean isTablet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +19,38 @@ public class LabListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Gato Encerrado");
+        isTablet = false;
 
         if(savedInstanceState == null){
+
             // Adds the first fullscreen fragment if there is no saved instance
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
             LabListFragment fragment = new LabListFragment();
 
-            fragmentTransaction.add(R.id.fragment_placeholder1, fragment, "labList");
+            if(findViewById(R.id.content_fragment_lab) == null) {
+                fragmentTransaction.add(R.id.fragment_placeholder1, fragment, "labList");
+            } else {
+                isTablet = true;
+                fragmentTransaction.add(R.id.lab_list_placeholder, fragment, "labList");
+
+            }
+
             fragmentTransaction.commit();
         }
     }
 
     // replaces the fullscreen fragment for another one
-    public void replaceFullscreenFragment(Fragment fragment, String name){
+    public void handleFragmentChange(Fragment fragment, String name){
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_placeholder1, fragment, name);
+        if(!isTablet) {
+            fragmentTransaction.replace(R.id.fragment_placeholder1, fragment, name);
+        } else {
+            fragmentTransaction.replace(R.id.content_fragment_lab, fragment, name);
+        }
         fragmentTransaction.addToBackStack(name);
         fragmentTransaction.commit();
     }

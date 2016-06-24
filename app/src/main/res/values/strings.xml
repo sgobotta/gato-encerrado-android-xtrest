@@ -8,11 +8,9 @@
 
     <string name="laberintos_title">Lista de laberintos</string>
     <string name="title_activity_main2">MainActivity2</string>
-    <string name="title_activity_main3">Main3Activity</string>
     <string name="user_selection_button">Seleccionar usuario</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_text_view">Elije un usuario</string>
     <string name="aceptar">Aceptar</string>
     <string name="title_activity_lab_list">LabListActivity</string>

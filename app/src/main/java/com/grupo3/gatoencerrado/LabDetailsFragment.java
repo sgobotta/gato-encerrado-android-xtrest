@@ -1,4 +1,4 @@
-package com.grupo3.gatoencerrado.juan;
+package com.grupo3.gatoencerrado;
 
 
 import android.os.Bundle;
@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.grupo3.gatoencerrado.R;
-import com.grupo3.gatoencerrado.model.Laberinto;
 import com.grupo3.gatoencerrado.service.DownloadImageTask;
 import com.grupo3.gatoencerrado.service.LaberintosServiceBuilder;
 
@@ -55,7 +53,7 @@ public class LabDetailsFragment extends Fragment {
                 args.putInt("idLaberinto", idLaberinto);
                 fragment.setArguments(args);
                 LabListActivity activity = (LabListActivity) LabDetailsFragment.this.getActivity();
-                activity.replaceFullscreenFragment(fragment,"labInventory");
+                activity.handleFragmentChange(fragment, "labInventory");
             }
         });
 

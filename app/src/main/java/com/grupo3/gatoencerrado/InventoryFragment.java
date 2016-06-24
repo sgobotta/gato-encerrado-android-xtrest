@@ -1,4 +1,4 @@
-package com.grupo3.gatoencerrado.juan;
+package com.grupo3.gatoencerrado;
 
 
 import android.os.Bundle;
@@ -7,15 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.grupo3.gatoencerrado.R;
 import com.grupo3.gatoencerrado.model.Elemento;
-import com.grupo3.gatoencerrado.model.Laberinto;
 import com.grupo3.gatoencerrado.service.LaberintosService;
 import com.grupo3.gatoencerrado.service.LaberintosServiceBuilder;
 

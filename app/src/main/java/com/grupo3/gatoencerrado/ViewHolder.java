@@ -1,4 +1,4 @@
-package com.grupo3.gatoencerrado.juan;
+package com.grupo3.gatoencerrado;
 
 import android.widget.ImageView;
 import android.widget.TextView;

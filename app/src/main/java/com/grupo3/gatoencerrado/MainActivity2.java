@@ -1,9 +1,7 @@
-package com.grupo3.gatoencerrado.juan;
+package com.grupo3.gatoencerrado;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -12,8 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.grupo3.gatoencerrado.R;
-import com.grupo3.gatoencerrado.model.Laberinto;
 import com.grupo3.gatoencerrado.model.User;
 import com.grupo3.gatoencerrado.service.LaberintosService;
 import com.grupo3.gatoencerrado.service.LaberintosServiceBuilder;
@@ -21,7 +17,6 @@ import com.grupo3.gatoencerrado.service.LaberintosServiceBuilder;
 import java.util.List;
 
 import retrofit.Callback;
-import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
