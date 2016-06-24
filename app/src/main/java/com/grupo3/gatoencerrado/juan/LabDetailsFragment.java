@@ -7,10 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.grupo3.gatoencerrado.R;
 import com.grupo3.gatoencerrado.model.Laberinto;
+import com.grupo3.gatoencerrado.service.DownloadImageTask;
+import com.grupo3.gatoencerrado.service.LaberintosServiceBuilder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,16 +35,17 @@ public class LabDetailsFragment extends Fragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        // Busca el path de la imagen y la baja con una AsyncTask para no colgar el thread principal
+        String path = getArguments().getString("imagePath");
+        new DownloadImageTask((ImageView) getActivity().findViewById(R.id.lab_image))
+                .execute(LaberintosServiceBuilder.API_URL + "/" + path);
+
+        // Actualiza el texto del fragment
         TextView labName = (TextView) getActivity().findViewById(R.id.details_lab_name);
-        TextView labId = (TextView) getActivity().findViewById(R.id.details_lab_id);
-        TextView labPath = (TextView) getActivity().findViewById(R.id.details_lab_path);
-
-        idLaberinto = getArguments().getInt("idLaberinto");
-
         labName.setText(getArguments().getString("nombreLaberinto"));
-        labId.setText(String.valueOf(idLaberinto));
-        labPath.setText(getArguments().getString("imagePath"));
 
+        // Arma el boton para ver el inventario
+        idLaberinto = getArguments().getInt("idLaberinto");
         Button verInventario = (Button) getActivity().findViewById(R.id.button_ver_inventario);
         verInventario.setOnClickListener(new View.OnClickListener() {
             @Override

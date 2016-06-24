@@ -35,15 +35,16 @@ public class LabListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lab_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if(savedInstanceState == null){
+            // Adds the first fullscreen fragment if there is no saved instance
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        // Adds the first fullscreen fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            LabListFragment fragment = new LabListFragment();
 
-        LabListFragment fragment = new LabListFragment();
-
-        fragmentTransaction.add(R.id.fragment_placeholder1, fragment, "labList");
-        fragmentTransaction.commit();
+            fragmentTransaction.add(R.id.fragment_placeholder1, fragment, "labList");
+            fragmentTransaction.commit();
+        }
     }
 
     // replaces the fullscreen fragment for another one
