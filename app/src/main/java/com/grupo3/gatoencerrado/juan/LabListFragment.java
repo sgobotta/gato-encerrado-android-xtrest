@@ -66,27 +66,39 @@ public class LabListFragment extends Fragment{
 
     private void adaptToList(List<Laberinto> labsAvailable) {
         ListView listView = (ListView) getActivity().findViewById(R.id.list_view_labs);
-        ArrayAdapter<Laberinto> adapter = new ArrayAdapter<Laberinto>(getActivity(), android.R.layout.simple_list_item_activated_1, labsAvailable);
+        AdapterLabList adapter = new AdapterLabList(getActivity(), labsAvailable);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Esto lo use para testear que funcionara el onClick, capaz despues lo borre.
-                String toastString = "Seleccionaste el laberinto: " + parent.getItemAtPosition(position).toString();
-                SingleToast.show(getContext(), toastString, Toast.LENGTH_SHORT);
-
-                // Probablemente esta no sea la manera más feliz de hacerlo, pero funciona y no usa constructor con parametros del fragment.
-                Laberinto labSelected = (Laberinto) parent.getItemAtPosition(position);
-                LabDetailsFragment fragment = new LabDetailsFragment();
-                Bundle args = new Bundle();
-                args.putInt("idLaberinto", labSelected.getIdLaberinto());
-                args.putString("nombreLaberinto", labSelected.getNombreLaberinto());
-                args.putString("imagePath", labSelected.getImagePath());
-                fragment.setArguments(args);
-                LabListActivity activity = (LabListActivity) LabListFragment.this.getActivity();
-                activity.replaceFullscreenFragment(fragment, "labDetails");
+                triggerToast(parent, position);
+                triggerFragmentReplace(parent, position);
             }
         });
+    }
+
+    private void triggerFragmentReplace(AdapterView<?> parent, int position) {
+        // Probablemente esta no sea la manera más feliz de hacerlo, pero funciona y no usa constructor con parametros del fragment.
+        // Armo el nuevo fragment
+        LabDetailsFragment fragment = new LabDetailsFragment();
+
+        // Armo el bundle con los argumentos a pasarle al fragment
+        Bundle args = new Bundle();
+        Laberinto labSelected = (Laberinto) parent.getItemAtPosition(position);
+        args.putInt("idLaberinto", labSelected.getIdLaberinto());
+        args.putString("nombreLaberinto", labSelected.getNombreLaberinto());
+        args.putString("imagePath", labSelected.getImagePath());
+        fragment.setArguments(args);
+
+        // Reemplazo el fragment por el nuevo
+        LabListActivity activity = (LabListActivity) LabListFragment.this.getActivity();
+        activity.replaceFullscreenFragment(fragment, "labDetails");
+    }
+
+    private void triggerToast(AdapterView<?> parent, int position) {
+        // Esto lo use para testear que funcionara el onClick, capaz despues lo borre.
+        String toastString = "Seleccionaste el laberinto: " + parent.getItemAtPosition(position).toString();
+        SingleToast.show(getContext(), toastString, Toast.LENGTH_SHORT);
     }
 
 

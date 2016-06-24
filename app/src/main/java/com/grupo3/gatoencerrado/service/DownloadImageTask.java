@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import java.io.InputStream;
 
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+    // ImageView al que le va a poner la imagen que baja en el postExecute
     ImageView bmImage;
 
     public DownloadImageTask(ImageView bmImage) {
@@ -30,6 +31,12 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
-        bmImage.setImageBitmap(result);
+        if (isCancelled()) {
+            result = null;
+        }
+
+        if(result != null){
+            bmImage.setImageBitmap(result);
+        }
     }
 }

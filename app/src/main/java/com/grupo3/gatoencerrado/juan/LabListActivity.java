@@ -35,6 +35,8 @@ public class LabListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lab_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("Gato Encerrado");
+
         if(savedInstanceState == null){
             // Adds the first fullscreen fragment if there is no saved instance
             FragmentManager fragmentManager = getSupportFragmentManager();
