@@ -4,11 +4,13 @@ public class Laberinto {
     private int idLaberinto;
     private String nombreLaberinto;
     private String imagePath;
+    private boolean isPlaying;
 
-    public Laberinto(int id, String nombre, String pathImagen) {
-        this.idLaberinto         = id;
-        this.nombreLaberinto     = nombre;
-        this.imagePath = pathImagen;
+    public Laberinto(int id, String nombre, String pathImagen, boolean isPlaying) {
+        this.idLaberinto       = id;
+        this.nombreLaberinto   = nombre;
+        this.imagePath         = pathImagen;
+        this.isPlaying         = isPlaying;
     }
 
     // solo para Json.fromObject (backend en play)
@@ -37,6 +39,14 @@ public class Laberinto {
 
     public void setNombreLaberinto(String nombreLaberinto) {
         this.nombreLaberinto = nombreLaberinto;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setIsPlaying(boolean isPlaying) {
+        this.isPlaying = isPlaying;
     }
 
     @Override

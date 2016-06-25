@@ -48,15 +48,19 @@ public class LabDetailsFragment extends Fragment {
         verInventario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InventoryFragment fragment = new InventoryFragment();
-                Bundle args = new Bundle();
-                args.putInt("idLaberinto", idLaberinto);
-                fragment.setArguments(args);
-                LabListActivity activity = (LabListActivity) LabDetailsFragment.this.getActivity();
-                activity.handleFragmentChange(fragment, "labInventory");
+                triggerFragmentChange();
             }
         });
 
         super.onActivityCreated(savedInstanceState);
+    }
+
+    private void triggerFragmentChange() {
+        InventoryFragment fragment = new InventoryFragment();
+        Bundle args = new Bundle();
+        args.putInt("idLaberinto", idLaberinto);
+        fragment.setArguments(args);
+        LabListActivity activity = (LabListActivity) LabDetailsFragment.this.getActivity();
+        activity.handleFragmentChange(fragment, "labInventory");
     }
 }

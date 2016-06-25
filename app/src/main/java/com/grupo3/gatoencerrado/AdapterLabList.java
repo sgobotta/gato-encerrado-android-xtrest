@@ -48,7 +48,7 @@ public class AdapterLabList extends BaseAdapter {
             holder = new ViewHolder();
             holder.labName = (TextView) convertView.findViewById(R.id.row_text_view);
             holder.labImage = (ImageView) convertView.findViewById(R.id.row_lab_image);
-            holder.position = position;
+            holder.labCheck = (ImageView) convertView.findViewById(R.id.check_image_playing);
             convertView.setTag(holder);
         } else {
            holder = (ViewHolder) convertView.getTag();
@@ -58,7 +58,11 @@ public class AdapterLabList extends BaseAdapter {
         String imagePath = LaberintosServiceBuilder.API_URL + "/" + laberinto.getImagePath();
 
         holder.labName.setText(laberinto.getNombreLaberinto());
-
+        if(laberinto.isPlaying()) {
+            holder.labCheck.setImageResource(R.drawable.check_box);
+        } else {
+            holder.labCheck.setImageResource(android.R.color.transparent);
+        }
         // Aca use el imageDownloader (Gracias internet), porque el DownloadImageTask se bugeaba zarpado con la listView,
         // al punto que se quedaba haciendo pedidos Async por 20 sec, y te tildaba todas las descargas de imagenes.
         // Estuve 4 horas intentando solucionarlo, leyendo en stackOverflow, hasta que tiraron esta helper class.

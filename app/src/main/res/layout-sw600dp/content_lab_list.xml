@@ -9,16 +9,21 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
+        android:layout_weight=".30"
         android:layout_height="match_parent"
-        android:id="@+id/lab_list_placeholder">
+        android:id="@+id/lab_list_placeholder"
+        >
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight=".70"
         android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:id="@+id/content_fragment_lab"
         >
 

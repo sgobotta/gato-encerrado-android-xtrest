@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -40,9 +41,22 @@ public class LabListFragment extends Fragment{
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        getLaberintosParaUsuarioActual();
+
+        Button refresh = (Button) getActivity().findViewById(R.id.button_refresh_lab_list);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getLaberintosParaUsuarioActual();
+            }
+        });
+
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    private void getLaberintosParaUsuarioActual(){
         int idUser = getActivity().getIntent().getExtras().getInt("userId");
         getLaberintosParaUsuario(idUser);
-        super.onActivityCreated(savedInstanceState);
     }
 
     private void getLaberintosParaUsuario(int id) {

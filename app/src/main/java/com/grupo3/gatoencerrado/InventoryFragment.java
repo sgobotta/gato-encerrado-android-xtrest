@@ -7,9 +7,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.grupo3.gatoencerrado.model.Elemento;
 import com.grupo3.gatoencerrado.service.LaberintosService;
@@ -61,20 +64,39 @@ public class InventoryFragment extends Fragment {
             @Override
             public void success(List<Elemento> inventario, Response response) {
                 adaptToList(inventario);
+                resetInventoryTitle();
             }
 
             @Override
             public void failure(RetrofitError error) {
-                // tendria que cambiar el server para que no devuelva una lista vacia, sino un badRequest, si el inventario que se pide no es de un juego en progreso.
-                Log.e("", error.getMessage());
-                error.printStackTrace();
+                displayErrorMessage();
             }
         });
     }
 
+    private void resetInventoryTitle(){
+        TextView textView = (TextView) getActivity().findViewById(R.id.inventory_title);
+        textView.setText(R.string.inventory_title);
+    }
+
     private void adaptToList(List<Elemento> inventario) {
         ListView listView = (ListView) getActivity().findViewById(R.id.inventory_list_view);
-        ArrayAdapter<Elemento> adapter = new ArrayAdapter<Elemento>(getActivity(), android.R.layout.simple_list_item_activated_1, inventario);
+        ArrayAdapter<Elemento> adapter = new ArrayAdapter<Elemento>(getActivity(), android.R.layout.simple_list_item_1, inventario);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                showDescription((Elemento) parent.getItemAtPosition(position));
+            }
+        });
+    }
+
+    private void showDescription(Elemento elemento) {
+        SingleToast.show(getContext(), elemento.getDescripcion(), Toast.LENGTH_LONG);
+    }
+
+    private void displayErrorMessage(){
+        TextView textView = (TextView) getActivity().findViewById(R.id.inventory_title);
+        textView.setText(R.string.lab_inventory_bad_request);
     }
 }

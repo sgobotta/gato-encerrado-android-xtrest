@@ -6,5 +6,5 @@ import android.widget.TextView;
 public class ViewHolder {
     public TextView labName;
     public ImageView labImage;
-    public int position;
+    public ImageView labCheck;
 }

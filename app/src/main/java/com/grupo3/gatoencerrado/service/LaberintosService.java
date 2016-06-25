@@ -21,7 +21,7 @@ public interface LaberintosService {
     @GET("/android/laberintos/{idUser}")
     void getLaberintosForUser(@Path("idUser") int idUser, Callback<List<Laberinto>> listCallback);
 
-    @GET("/android/users/playing")
+    @GET("/android/users/logged")
     void getUsersPlaying(Callback<List<User>> listCallback);
 
     @GET("/android/inventario/{idUser}/{idLab}")
